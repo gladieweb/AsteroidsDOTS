@@ -30,9 +30,7 @@ namespace Dots.Systems
                     var isParticleEnabled = manager.GetEnabled(engineData.ParticleEntity);
                     switch (engineActive)
                     {
-                        //var isEmitting = engineData.NormalEngine.isPlaying;
                         case true when !isParticleEnabled:
-                            Debug.Log("managed class update " + inputData.Button1 );
                             manager.SetEnabled(engineData.ParticleEntity, true);
                             break;
                         case false when isParticleEnabled:

@@ -8,21 +8,6 @@ namespace Dots.Systems
 {
     public class BoundsCorrectionSystem : SystemBase
     {
-        protected override void OnCreate()
-        {
-            Debug.Log("OnCreate()");
-        }
-
-        protected override void OnStartRunning()
-        {
-            base.OnStartRunning();
-        }
-
-        protected override void OnStopRunning()
-        {
-            base.OnStopRunning();
-        }
-
         protected override void OnUpdate()
         {
             int width = Screen.width/2;
@@ -57,11 +42,6 @@ namespace Dots.Systems
                         }
                     }
                 ).ScheduleParallel();
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
         }
     }
 }

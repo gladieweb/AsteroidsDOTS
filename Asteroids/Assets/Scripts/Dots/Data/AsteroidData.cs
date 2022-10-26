@@ -2,8 +2,8 @@ using Unity.Entities;
 
 namespace Dots.Data
 {
-    public struct AsteroidData : IBufferElementData
+    public struct AsteroidData : IComponentData
     {
-        
+        public int asteroidGeneration;
     }
 }

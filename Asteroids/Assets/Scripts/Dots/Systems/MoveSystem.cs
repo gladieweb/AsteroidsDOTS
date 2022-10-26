@@ -17,16 +17,9 @@ public class MoveSystem : SystemBase
                 .WithEntityQueryOptions(EntityQueryOptions.FilterWriteGroup)
                 .WithAll<TagMove>()
                 .ForEach(
-                    (ref Translation velocity, ref Rotation rot, in SimpleMoveData movementData
-                        ) =>
+                    (ref Translation velocity, ref Rotation rot, in SimpleMoveData movementData) =>
                     {
-                        /*var dir = movementData.Direction;
-                        dir.z = 0;
-                        dir = math.normalize(dir);
-                        rot.Value = quaternion.LookRotation(dir, math.up());*/
                         velocity.Value += movementData.Direction * movementData.Speed  * time;
-                        
-                        Debug.Log("flying");
                     }
                 ).ScheduleParallel();
         }

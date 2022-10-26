@@ -19,8 +19,6 @@ namespace Dots.Systems
         protected override void OnUpdate()
         {
             var ecb = _endInitializationEntityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
-            //var spawnerQuery = EntityManager.CreateEntityQuery(typeof(WeaponCooldown), typeof(WeaponData));
-            //spawnerQuery.toe
             var newjob= Entities
                 .WithNone<TagShouldSpawnBullet>()   
                 .WithAll<TagWeapon>()
@@ -30,18 +28,12 @@ namespace Dots.Systems
                         if (weaponData.IsFiring == 1)
                         {
                             ecb.AddComponent<TagShouldSpawnBullet>(entityInQueryIndex, entity);
-                           //ecb.AddComponent<TagShouldSpawnBullet>();
-                            Debug.Log("Fire");
                         }
                         
                     }
                 ).ScheduleParallel(this.Dependency);
-            
             _endInitializationEntityCommandBufferSystem.AddJobHandleForProducer(newjob);
             this.Dependency = newjob;
-            //ecb.AddComponent<TagShouldSpawn>(spawnerQuery);
-            //ecb.RemoveComponent<TagShouldSpawn>(spawnerQuery);
-
         }
     }
 }

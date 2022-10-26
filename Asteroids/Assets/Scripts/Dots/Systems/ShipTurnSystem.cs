@@ -7,7 +7,6 @@ using Unity.Transforms;
 
 namespace Dots.Systems
 {
-    [UpdateBefore(typeof(ShipMoveForwardSystem))]
     [AlwaysSynchronizeSystem]
     public class ShipTurnSystem : JobComponentSystem
     {
