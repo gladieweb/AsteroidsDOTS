@@ -7,7 +7,7 @@ using Unity.Transforms;
 using UnityEngine;
 using Utility;
 
-namespace Dots.Systems.Hybrid
+namespace Dots.Systems
 {
     [UpdateInGroup(typeof(LateSimulationSystemGroup))]
     public class SpawnBulletSystem : SystemBase

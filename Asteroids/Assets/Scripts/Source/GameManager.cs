@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject shipPrefab;
     private EntityManager _entityManager;
     private Entity _shipEntityPrefab;
+     
     // Start is called before the first frame update
     private void Start()
     {

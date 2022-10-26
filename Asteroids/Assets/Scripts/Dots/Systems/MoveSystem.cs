@@ -1,25 +1,21 @@
 using Dots.Data;
-using Dots.Systems.Hybrid;
 using Dots.Tags.Actions;
 using Unity.Entities;
-using Unity.Jobs;
-using Unity.Mathematics;
-using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 
 namespace Dots.Systems{
-[AlwaysSynchronizeSystem]
+
 [UpdateBefore(typeof(TransformSystemGroup))]
-//[UpdateInGroup(typeof(LateSimulationSystemGroup))]
 public class MoveSystem : SystemBase
     {
         protected override void OnUpdate()
         {
             float time = Time.DeltaTime;
+            
             Entities
-                //.WithEntityQueryOptions(EntityQueryOptions.FilterWriteGroup)
-                //.WithAll<TagMove>()
+                .WithEntityQueryOptions(EntityQueryOptions.FilterWriteGroup)
+                .WithAll<TagMove>()
                 .ForEach(
                     (ref Translation velocity, ref Rotation rot, in SimpleMoveData movementData
                         ) =>
@@ -32,7 +28,8 @@ public class MoveSystem : SystemBase
                         
                         Debug.Log("flying");
                     }
-                ).Run();
+                ).ScheduleParallel();
         }
+        
     }
 }
